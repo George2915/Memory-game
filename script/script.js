@@ -48,7 +48,8 @@ const cardArray = [
         img: "images/milkshake.png",
     }
 ];
-
+const restartButton = document.querySelector(".restart");
+restartButton.style.visibility = "hidden";
 cardArray.sort(() => 0.5 - Math.random());
 
 const gridDisplay = document.querySelector("#grid");
@@ -95,6 +96,7 @@ function checkMatch() {
 
     if (cardsWon.length == cardArray.length/2) {
         result.innerHTML = "Congratulation!"
+        restartButton.style.visibility = "visible"
     }
 }
 function flipCard() {
@@ -104,6 +106,7 @@ function flipCard() {
         return; // Don't proceed if the card has already been chosen
     }    
     cardArray[cardId].name;
+    console.log(cardArray[cardId].name);
     cardChosen.push(cardArray[cardId].name);
     cardsChosenIds.push(cardId)
     this.setAttribute('src', cardArray[cardId].img);
@@ -118,3 +121,16 @@ function flipCard() {
         }, 200);
     }
 }
+restartButton.addEventListener("click", restart); 
+function restart() {
+    const cards = document.querySelectorAll("#grid img")
+    result.innerHTML = 0
+    cardsWon.length = 0
+    for(let i=0;i < cards.length; i++){
+        cards[i].setAttribute("src", "images/blank.png");
+        cards[i].addEventListener("click", flipCard);
+        restartButton.style.visibility = "hidden";
+    }
+
+};
+   
