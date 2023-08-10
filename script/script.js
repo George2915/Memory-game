@@ -64,8 +64,7 @@ function createBoard() {
         card.setAttribute('src', 'images/blank.png');
         card.setAttribute('data-id', i);
         gridDisplay.style.display = 'flex';
-        gridDisplay.style.width = "400px"
-        gridDisplay.style.height = "100px"
+        card.setAttribute("class", "card");
         card.addEventListener("click", flipCard)
         gridDisplay.appendChild(card)
     }
